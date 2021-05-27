@@ -8,10 +8,10 @@
 		<version>2.5.0</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.testAPI</groupId>
-	<artifactId>testRESTApi</artifactId>
+	<groupId>com.crmApp</groupId>
+	<artifactId>API</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>testRESTApi</name>
+	<name>RESTApi</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>11</java.version>

@@ -1,6 +1,6 @@
-package com.testAPI.testRESTApi.repository;
+package com.crmApp.API.repository;
 
-import com.testAPI.testRESTApi.model.Product;
+import com.crmApp.API.model.Product;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

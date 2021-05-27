@@ -1,11 +1,9 @@
-package com.testAPI.testRESTApi.controller;
+package com.crmApp.API.controller;
 
-import com.testAPI.testRESTApi.model.Product;
-import com.testAPI.testRESTApi.repository.ProductRepository;
+import com.crmApp.API.repository.ProductRepository;
+import com.crmApp.API.model.Product;
 
 import java.util.List;
-
-import javax.persistence.EntityManager;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
