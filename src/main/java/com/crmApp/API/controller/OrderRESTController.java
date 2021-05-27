@@ -13,7 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/order-management", produces = {MediaType.APPLICATION_JSON_VALUE})
-public class OrderController {
+public class OrderRESTController {
     @Autowired
     private OrderRepository repository;
 

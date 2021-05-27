@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/user-management", produces = {MediaType.APPLICATION_JSON_VALUE})
-public class UserController {
+public class UserRESTController {
     @Autowired
     private UserRepository repository;
 
