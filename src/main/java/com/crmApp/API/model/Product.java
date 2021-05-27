@@ -76,10 +76,13 @@ public class Product implements Serializable{
 
     @Override
     public String toString() {
-        return "EmployeeVO [id=" + id + ", name=" + name + 
-        ", desc=" + description + ", price=" + price + ", sotck=" + stock  + "]";
+        return "Product{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", price=" + price +
+                ", stock=" + stock +
+                '}';
     }
-
-
 }
 
