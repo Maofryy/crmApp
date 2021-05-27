@@ -1,20 +1,18 @@
 package com.crmApp.API.model;
 
 import java.io.Serializable;
- 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import java.util.List;
+import java.util.Set;
+
+import javax.persistence.*;
 
 @Entity
 @Table(name = "tbl_product")
-public class Product implements Serializable{
+public class Product implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long productId;
 
     private String name;
 
@@ -22,32 +20,38 @@ public class Product implements Serializable{
 
     private double price;
 
-    private Long stock; 
+    private Long stock;
 
-    
-   // @ManyToOne
-   // @JoinColumn(name="USR_ID")
-   // private User user;
+    @OneToMany(mappedBy = "product")
+    Set<Transaction> transactions;
 
-    public Product() {
+    @ManyToOne
+    @JoinColumn(name = "userId")
+    User user;
 
+
+    public Long getProductId() {
+        return productId;
     }
 
-    // Getters and Setters
-    public Long getId() {
-        return id;
+    public Set<Transaction> getTransactions() {
+        return transactions;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setTransactions(Set<Transaction> transactions) {
+        this.transactions = transactions;
     }
 
-    public Long getStock() {
-        return stock;
+    public User getUser() {
+        return user;
     }
 
-    public void setStock(Long stock) {
-        this.stock = stock;
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public void setProductId(Long productId) {
+        this.productId = productId;
     }
 
     public String getName() {
@@ -58,11 +62,11 @@ public class Product implements Serializable{
         this.name = name;
     }
 
-    public String getDesc() {
+    public String getDescription() {
         return description;
     }
 
-    public void setDesc(String description) {
+    public void setDescription(String description) {
         this.description = description;
     }
 
@@ -74,10 +78,29 @@ public class Product implements Serializable{
         this.price = price;
     }
 
+    public Long getStock() {
+        return stock;
+    }
+
+    public void setStock(Long stock) {
+        this.stock = stock;
+    }
+
+// @ManyToOne
+    // @JoinColumn(name="USR_ID")
+    // private User user;
+
+    public Product() {
+
+    }
+
+    // Getters and Setters
+
+
     @Override
     public String toString() {
         return "Product{" +
-                "id=" + id +
+                "id=" + productId +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", price=" + price +

@@ -60,7 +60,7 @@ public class ClientRESTController {
             Client.setEmail(newClient.getEmail());
             return repository.save(Client);
         }).orElseGet(() -> {
-            newClient.setId(id);
+            newClient.setClientId(id);
             return repository.save(newClient);
         });
     }

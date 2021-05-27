@@ -3,6 +3,7 @@ package com.crmApp.API.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Set;
 
 @Entity
 @Table(name = "tbl_client")
@@ -10,7 +11,7 @@ public class Client implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long ClientId;
 
     private String lastName;
 
@@ -20,18 +21,38 @@ public class Client implements Serializable {
 
     private String email;
 
-    // @ManyToOne
-    // @oneToMany
+    @OneToMany(mappedBy = "clients")
+    Set<Order> order;
+
+    @ManyToOne
+    @JoinColumn(name = "userId")
+    User user;
 
     public Client() {
     }
 
-    public Long getId() {
-        return id;
+    public Long getClientId() {
+        return ClientId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public Set<Order> getOrder() {
+        return order;
+    }
+
+    public void setOrder(Set<Order> order) {
+        this.order = order;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public void setClientId(Long clientId) {
+        ClientId = clientId;
     }
 
     public String getLastName() {
@@ -69,14 +90,12 @@ public class Client implements Serializable {
     @Override
     public String toString() {
         return "Client{" +
-                "id=" + id +
+                "ClientId=" + ClientId +
                 ", lastName='" + lastName + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", address='" + address + '\'' +
                 ", email='" + email + '\'' +
                 '}';
     }
-
-
 }
 

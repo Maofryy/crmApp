@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "tbl_order")
@@ -14,22 +16,37 @@ public class Order implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
-    private Long id;
+    private Long orderId;
 
     private String status;
 
     private Date datetime;
 
-    public Order(){
+    @OneToMany(mappedBy = "order")
+    Set<Transaction> transactions;
+
+    @ManyToOne
+    @JoinColumn(name = "clientId")
+    Client clients;
+
+    public Order() {
 
     }
 
-    public Long getId() {
-        return id;
+    public Long getOrderId() {
+        return orderId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setOrderId(Long orderId) {
+        this.orderId = orderId;
+    }
+
+    public Client getClients() {
+        return clients;
+    }
+
+    public void setClients(Client clients) {
+        this.clients = clients;
     }
 
     public String getStatus() {
@@ -48,12 +65,21 @@ public class Order implements Serializable {
         this.datetime = datetime;
     }
 
+    public Set<Transaction> getTransactions() {
+        return transactions;
+    }
+
+    public void setTransactions(Set<Transaction> transactions) {
+        this.transactions = transactions;
+    }
+
     @Override
     public String toString() {
         return "Order{" +
-                "id=" + id +
+                "orderId=" + orderId +
                 ", status='" + status + '\'' +
                 ", datetime=" + datetime +
+                ", transaction=" + transactions +
                 '}';
     }
 }

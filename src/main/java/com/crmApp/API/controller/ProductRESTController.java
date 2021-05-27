@@ -54,12 +54,12 @@ public class ProductRESTController
  
         return repository.findById(id).map(Product -> {
             Product.setName(newProduct.getName());
-            Product.setDesc(newProduct.getDesc());
+            Product.setDescription(newProduct.getDescription());
             Product.setPrice(newProduct.getPrice());
             Product.setStock(newProduct.getStock());
             return repository.save(Product);
         }).orElseGet(() -> {
-            newProduct.setId(id);
+            newProduct.setProductId(id);
             return repository.save(newProduct);
         });
     }

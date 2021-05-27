@@ -50,7 +50,7 @@ public class OrderRESTController {
             Order.setDatetime(newOrder.getDatetime());
             return repository.save(Order);
         }).orElseGet(() -> {
-            newOrder.setId(id);
+            newOrder.setOrderId(id);
             return repository.save(newOrder);
         });
     }

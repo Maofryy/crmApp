@@ -4,6 +4,7 @@ import net.bytebuddy.dynamic.loading.InjectionClassLoader;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Set;
 
 @Entity
 @Table(name = "tbl_user")
@@ -12,7 +13,7 @@ public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
-    private Long id;
+    private Long userId;
 
     private String firstName;
 
@@ -24,15 +25,37 @@ public class User implements Serializable {
 
     private String password;
 
+    @OneToMany(mappedBy = "user")
+    Set<Client> clients;
+
+    @OneToMany(mappedBy = "user")
+    Set<Product> products;
+
     public User() {
     }
 
-    public Long getId() {
-        return id;
+    public Set<Client> getClients() {
+        return clients;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setClients(Set<Client> clients) {
+        this.clients = clients;
+    }
+
+    public Set<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(Set<Product> products) {
+        this.products = products;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
     public String getFirstName() {
@@ -78,7 +101,7 @@ public class User implements Serializable {
     @Override
     public String toString() {
         return "User{" +
-                "id=" + id +
+                "userId=" + userId +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", address='" + address + '\'' +
@@ -87,4 +110,5 @@ public class User implements Serializable {
                 '}';
     }
 }
+
 

@@ -49,7 +49,7 @@ public class UserRESTController {
             User.setPassword(newUser.getPassword());
             return repository.save(User);
         }).orElseGet(() -> {
-            newUser.setId(id);
+            newUser.setUserId(id);
             return repository.save(newUser);
         });
     }
