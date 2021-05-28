@@ -1,7 +1,5 @@
 package com.crmApp.API.model;
 
-import net.bytebuddy.dynamic.loading.InjectionClassLoader;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Set;
@@ -30,6 +28,14 @@ public class User implements Serializable {
 
     @OneToMany(mappedBy = "user")
     Set<Product> products;
+
+    public User(String firstName, String lastName, String address, String email, String password) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.address = address;
+        this.email = email;
+        this.password = password;
+    }
 
     public User() {
     }
