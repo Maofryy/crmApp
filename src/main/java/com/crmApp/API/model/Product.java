@@ -1,7 +1,6 @@
 package com.crmApp.API.model;
 
 import java.io.Serializable;
-import java.util.List;
 import java.util.Set;
 
 import javax.persistence.*;
@@ -28,6 +27,7 @@ public class Product implements Serializable {
     @ManyToOne
     @JoinColumn(name = "userId")
     User user;
+    //Long user_id;
 
 
     public Long getProductId() {

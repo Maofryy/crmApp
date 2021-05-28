@@ -3,7 +3,7 @@ package com.crmApp.API.controller;
 import com.crmApp.API.repository.ProductRepository;
 import com.crmApp.API.model.Product;
 
-import java.util.List;
+import java.util.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -57,6 +57,7 @@ public class ProductRESTController
             Product.setDescription(newProduct.getDescription());
             Product.setPrice(newProduct.getPrice());
             Product.setStock(newProduct.getStock());
+            Product.setUser(newProduct.getUser());
             return repository.save(Product);
         }).orElseGet(() -> {
             newProduct.setProductId(id);
@@ -69,5 +70,15 @@ public class ProductRESTController
         repository.deleteById(id);
     }
 
+    @GetMapping("/products/users/{id}")
+    List<Product> getProductByUserId(@PathVariable Long userId){
+        List<Product> ret = new ArrayList<Product>();
+        for (Product p: repository.findAll()) {
+            if (p.getUser().getUserId() == userId) {
+                ret.add(p);
+            }
+        }
+        return ret;
+    }
 }
 
