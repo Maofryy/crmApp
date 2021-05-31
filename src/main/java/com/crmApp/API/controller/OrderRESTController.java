@@ -1,10 +1,7 @@
 package com.crmApp.API.controller;
 
-import com.crmApp.API.model.Client;
 import com.crmApp.API.model.Order;
-import com.crmApp.API.repository.ClientRepository;
 import com.crmApp.API.repository.OrderRepository;
-import org.aspectj.weaver.ast.Or;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;

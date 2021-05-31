@@ -1,7 +1,6 @@
 package com.crmApp.API.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.io.Serializable;
 import java.util.Set;
@@ -88,6 +87,14 @@ public class Product implements Serializable {
 
     public void setStock(Long stock) {
         this.stock = stock;
+    }
+
+    public long getSold() {
+        long count = 0;
+        for (Transaction t: transactions) {
+            count += t.getQuantity();
+        }
+        return count;
     }
 
 // @ManyToOne

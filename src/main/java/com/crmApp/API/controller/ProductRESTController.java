@@ -70,7 +70,8 @@ public class ProductRESTController
         repository.deleteById(id);
     }
 
-    @GetMapping("/products/users/{id}")
+    //? Isn't it better to just access this through User controller ?
+    @GetMapping("/products/users/{userId}")
     List<Product> getProductByUserId(@PathVariable Long userId){
         List<Product> ret = new ArrayList<Product>();
         for (Product p: repository.findAll()) {
@@ -80,5 +81,13 @@ public class ProductRESTController
         }
         return ret;
     }
-}
 
+    @DeleteMapping("/products/users/{userId}")
+    void deleteProductByUser(@PathVariable Long userId) {
+        for (Product p: repository.findAll()) {
+            if (p.getUser().getUserId() == userId) {
+                repository.delete(p);
+            }
+        }
+    }
+}

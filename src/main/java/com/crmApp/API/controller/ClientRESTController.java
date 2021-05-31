@@ -2,8 +2,6 @@ package com.crmApp.API.controller;
 
 import com.crmApp.API.model.Client;
 import com.crmApp.API.repository.ClientRepository;
-import com.crmApp.API.repository.ProductRepository;
-import com.crmApp.API.model.Product;
 
 import java.util.List;
 
@@ -69,6 +67,5 @@ public class ClientRESTController {
     void deleteClient(@PathVariable Long id) {
         repository.deleteById(id);
     }
-
 }
 
